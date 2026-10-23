@@ -1,0 +1,54 @@
+{
+  "name": "sprite-console-desktop",
+  "version": "1.0.0",
+  "description": "Sprite Console desktop app",
+  "main": "main.js",
+  "author": "Sprite Bot",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "electron": "33.2.1",
+    "electron-builder": "25.1.8"
+  },
+  "build": {
+    "appId": "com.spritebot.console",
+    "productName": "Sprite Console",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "artifactName": "SpriteConsole-Setup.${ext}"
+    },
+    "portable": {
+      "artifactName": "SpriteConsole-Portable.${ext}"
+    }
+  }
+}
